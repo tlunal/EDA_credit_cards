@@ -108,16 +108,17 @@ if columna_x4 and columna_y2:
     dfCategory = df.groupby([columna_x4,columna_y2])[columna_x4].count().reset_index(name="count")
 
     # Use that layout here
-    
-    fig = px.scatter(df[df['default payment next month'] == 'Yes'], x=columna_x4,
+    df_filt = df[df['default payment next month'] == 'Yes']
+    fig = px.scatter(df_filt, x=columna_x4,
                    y=columna_y2,
-                     color=df[df['default payment next month'] == 'Yes']['default payment next month'], opacity=0.3, color_discrete_sequence=px.colors.qualitative.Set1,
+                     color='default payment next month', opacity=0.3, color_discrete_sequence=px.colors.qualitative.Set1,
                    title= 'Clientes en default respecto a ' + columna_y2 + " y " + columna_x4)
     st.plotly_chart(fig)
     
-    fig = px.scatter(df[df['default payment next month'] == 'No'], x=columna_x4,
+    df_filt2 = df[df['default payment next month'] == 'No']
+    fig = px.scatter(df_filt2, x=columna_x4,
                    y=columna_y2,
-                     color=df[df['default payment next month'] == 'No']['default payment next month'], opacity=0.3, color_discrete_sequence=px.colors.qualitative.Plotly,
+                     color='default payment next month', opacity=0.3, color_discrete_sequence=px.colors.qualitative.Plotly,
                    title= 'Clientes NO en default respecto a ' + columna_y2 + " y " + columna_x4)
     st.plotly_chart(fig)
     

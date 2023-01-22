@@ -20,9 +20,17 @@ df['AGE_BINS'] = pd.cut(df['AGE'], bins)
 
 columns_cat = ['SEX', 'EDUCATION', 'MARRIAGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'default payment next month',
               'AGE_BINS']
+
+columns_cat2 = ['default payment next month', 'SEX', 'EDUCATION', 'MARRIAGE', 'PAY_0', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 
+              'AGE_BINS']
+
 columns_num = ['LIMIT_BAL', 'AGE', 'BILL_AMT1', 'BILL_AMT2',
        'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',
        'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']
+
+columns_num2 = ['AGE', 'BILL_AMT1', 'BILL_AMT2',
+       'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6', 'PAY_AMT1',
+       'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6', 'LIMIT_BAL']
 
 df['SEX'].replace(1, 'Male', inplace=True)
 df['SEX'].replace(2, 'Female', inplace=True)
@@ -91,7 +99,7 @@ st.markdown("#### Variables numéricas")
 
 
 columna_x4 = st.selectbox("Selecciona una columna para x", columns_num, key='columna_5')
-columna_y2 = st.selectbox("Selecciona una columna para y", columns_num, key='columna_6')
+columna_y2 = st.selectbox("Selecciona una columna para y", columns_num2, key='columna_6')
 #columna_y = st.selectbox("Selecciona un filtro", columnas_cat, key='columna_4')
 
 
@@ -132,7 +140,7 @@ st.markdown("#### Variables categóricas")
 
 
 columna_x3 = st.selectbox("Selecciona una columna para x", columnas_cat, key='columna_3')
-columna_y = st.selectbox("Selecciona una columna para y", columnas_cat, key='columna_4')
+columna_y = st.selectbox("Selecciona una columna para y", columns_cat2, key='columna_4')
 
 if columna_x3 and columna_y:
     
